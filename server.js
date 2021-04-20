@@ -5,10 +5,10 @@ const PORT = process.env.PORT || 3000;
 const path = require("path");
 const cors = require("cors");
 // Cors
-const corsOptions = {
-  origin: process.env.ALLOWED_CLIENTS.split(","),
-  // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
-};
+// const corsOptions = {
+//   origin: process.env.ALLOWED_CLIENTS.split(","),
+//   // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
+// };
 
 // Default configuration looks like
 // {
@@ -20,25 +20,25 @@ const corsOptions = {
 
 //dont touch this
 //CORS middleware
-// var corsMiddleware = function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); //replace localhost with actual host
-//   res.header(
-//     "Access-Control-Allow-Methods",
-//     "OPTIONS, GET, PUT, PATCH, POST, DELETE"
-//   );
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Content-Type, X-Requested-With, Authorization"
-//   );
+var corsMiddleware = function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:3001"); //replace localhost with actual host
+  res.header(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, PUT, PATCH, POST, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, X-Requested-With, Authorization"
+  );
 
-//   next();
-// };
+  next();
+};
 
-// app.use(corsMiddleware);
+app.use(corsMiddleware);
 
 //////////////////////////
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.static("public"));
 
 const connectDB = require("./config/db");
