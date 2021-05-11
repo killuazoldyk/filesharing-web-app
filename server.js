@@ -21,7 +21,7 @@ const cors = require("cors");
 //dont touch this
 //CORS middleware
 var corsMiddleware = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://killuazoldyk.github.io/filesharing-web-app-frontend"); //replace localhost with actual host
+  res.header("Access-Control-Allow-Origin", "https://killuazoldyk.github.io/filesharing-web-app-frontend/"); //replace localhost with actual host
   res.header(
     "Access-Control-Allow-Methods",
     "OPTIONS, GET, PUT, PATCH, POST, DELETE"
